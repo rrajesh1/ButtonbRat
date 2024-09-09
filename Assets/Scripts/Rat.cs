@@ -10,11 +10,8 @@ public class Rat : MonoBehaviour
     // Sprites for different walking directions
     public Sprite spriteUp;
     public Sprite spriteLeft;
-
-    public GameObject strawberry;  
-    public GameObject banana;
-    public GameObject rotten_apple;
-    public GameObject button;
+    //public List<GameObject> fruitPrefabs; // List of fruit prefabs
+    public FoodSpawner foodSpawner;
 
     Rigidbody2D myrb2d;  
     SpriteRenderer spriteRenderer;  
@@ -24,6 +21,20 @@ public class Rat : MonoBehaviour
     {
         myrb2d = GetComponent<Rigidbody2D>();  
         spriteRenderer = GetComponent<SpriteRenderer>(); 
+        //foodSpawner.GetComponent<FoodSpawner>();
+
+
+         // Ensure the foodSpawner is set and spawn the first fruit
+        // if (foodSpawner != null)
+        // {
+        //     foodSpawner.SpawnFruit();
+        // }
+        // else
+        // {
+        //     Debug.LogError("FoodSpawner reference not set on the Rat!");
+        // }
+        
+        // foodSpawner.SpawnFruit();
     }
 
     // Update is called once per frame
@@ -87,6 +98,16 @@ public class Rat : MonoBehaviour
     void PlaceButton()
     {
         //Instantiate(buttonPrefab, roundedPosition, Quaternion.identity);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.CompareTag("Fruit")){
+            Destroy(collision.gameObject);
+        }
+
+        else if(collision.gameObject.CompareTag("Cheese")){
+            Destroy(collision.gameObject);
+        }
     }
 
 }
