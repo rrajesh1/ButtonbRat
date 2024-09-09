@@ -9,8 +9,7 @@ public class Rat : MonoBehaviour
 
     // Sprites for different walking directions
     public Sprite spriteUp;
-    public Sprite spriteDown;
-    public Sprite spriteRight;
+    public Sprite spriteLeft;
 
     public GameObject strawberry;  
     public GameObject banana;
@@ -40,11 +39,11 @@ public class Rat : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow)) movementX = 1;  // Move right
 
         Vector2 movement = new Vector2(movementX, movementY).normalized;
-        myrb2d.linearVelocity = movement * speed;
+        myrb2d.velocity = movement * speed;
 
         UpdateRatSprite(movement);
 
-        // Placing button with Right Shift
+        // Placing bomb with Right Shift
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
             PlaceButton();
@@ -59,33 +58,35 @@ public class Rat : MonoBehaviour
         {
             spriteRenderer.sprite = spriteUp;
             spriteRenderer.flipX = false;
+            spriteRenderer.flipY = false;
         }
 
         // Moving down
         else if (movement.y < 0) 
         {
-            spriteRenderer.sprite = spriteDown;
+            spriteRenderer.sprite = spriteUp;
             spriteRenderer.flipX = false;
+            spriteRenderer.flipY = true;
         }
 
         // Moving right
         else if (movement.x > 0)  
         {
-            spriteRenderer.sprite = spriteRight;
-            spriteRenderer.flipX = false;
+            spriteRenderer.sprite = spriteLeft;
+            spriteRenderer.flipX = true;
         }
 
         // Moving left
         else if (movement.x < 0)  
         {
-            spriteRenderer.sprite = spriteRight;
-            spriteRenderer.flipX = true;  // Flip sprite for left direction
+            spriteRenderer.sprite = spriteLeft;
+            spriteRenderer.flipX = false;  // Flip sprite for left direction
         }
     }
 
     void PlaceButton()
     {
-        Instantiate(buttonPrefab, roundedPosition, Quaternion.identity);
+        //Instantiate(buttonPrefab, roundedPosition, Quaternion.identity);
     }
 
 }
