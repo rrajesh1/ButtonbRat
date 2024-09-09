@@ -47,7 +47,6 @@ public class FoodSpawner : MonoBehaviour
     {
         Vector2 randomPosition = GetRandomPosition();
 
-        // Check if position is valid (not occupied by fruit or maze)
         while (IsPositionOccupied(randomPosition) || IsPositionInMaze(randomPosition))
         {
             randomPosition = GetRandomPosition();
@@ -87,6 +86,14 @@ public class FoodSpawner : MonoBehaviour
     bool IsPositionOccupied(Vector2 position)
     {
         // Check if the position is already occupied by another fruit or cheese
+        // Check if position is valid (not occupied by fruit or maze)
+        //Vector3 horizontalOffset = new Vector3(0, 0.1f, 0);
+        //Vector3 verticalOffset = new Vector3(0.1f, 0, 0);
+
+        //float distance = Vector3.Magnitude(2 * verticalOffset);
+        //RaycastHit2D hit1 = Physics2D.Raycast(transform.position - verticalOffset, new Vector2(0, 1), 1f, mazeLayer);
+        //RaycastHit2D hit2 = Physics2D.Raycast(transform.position - horizontalOffset, new Vector2(1, 0), 1f, mazeLayer);
+        //return (hit1.collider != null || hit2.collider != null || occupiedPositions.Contains(position));
         return occupiedPositions.Contains(position);
     }
 

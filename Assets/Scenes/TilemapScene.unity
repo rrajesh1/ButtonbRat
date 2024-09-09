@@ -2175,7 +2175,7 @@ GameObject:
   - component: {fileID: 538993663}
   - component: {fileID: 538993662}
   - component: {fileID: 538993661}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3601,11 +3601,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4108543674853280958, guid: d8674105e68ca4b8480bdc7140779b76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.45
+      value: 8.42
       objectReference: {fileID: 0}
     - target: {fileID: 4108543674853280958, guid: d8674105e68ca4b8480bdc7140779b76, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.55
+      value: -4.64
       objectReference: {fileID: 0}
     - target: {fileID: 4108543674853280958, guid: d8674105e68ca4b8480bdc7140779b76, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3845,7 +3845,7 @@ MonoBehaviour:
   cheesePrefab: {fileID: 2731175629124422256, guid: d8674105e68ca4b8480bdc7140779b76, type: 3}
   mazeLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   cheeseSpawnInterval: 10
   fruitPrefabs: []
 --- !u!4 &1125000532
