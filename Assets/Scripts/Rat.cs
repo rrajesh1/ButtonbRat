@@ -21,7 +21,7 @@ public class Rat : MonoBehaviour
     {
         myrb2d = GetComponent<Rigidbody2D>();  
         spriteRenderer = GetComponent<SpriteRenderer>(); 
-        //foodSpawner.GetComponent<FoodSpawner>();
+        foodSpawner.GetComponent<FoodSpawner>();
 
 
          // Ensure the foodSpawner is set and spawn the first fruit
@@ -34,7 +34,7 @@ public class Rat : MonoBehaviour
         //     Debug.LogError("FoodSpawner reference not set on the Rat!");
         // }
         
-        // foodSpawner.SpawnFruit();
+        foodSpawner.SpawnCheese();
     }
 
     // Update is called once per frame
@@ -106,6 +106,7 @@ public class Rat : MonoBehaviour
         }
 
         else if(collision.gameObject.CompareTag("Cheese")){
+            foodSpawner.SpawnCheese();
             Destroy(collision.gameObject);
         }
     }

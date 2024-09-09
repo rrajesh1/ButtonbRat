@@ -17,7 +17,7 @@ public class FoodSpawner : MonoBehaviour
         this.fruitPrefabs = fruitPrefabs;
 
         // Start spawning cheese at regular intervals
-        StartCoroutine(SpawnCheeseAtIntervals());
+        //StartCoroutine(SpawnCheeseAtIntervals());
     }
 
     public void Start()
@@ -43,21 +43,38 @@ public class FoodSpawner : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnCheeseAtIntervals()
+    public void SpawnCheese()
     {
-        while (true)
+        Vector2 randomPosition = GetRandomPosition();
+
+        // Check if position is valid (not occupied by fruit or maze)
+        while (IsPositionOccupied(randomPosition) || IsPositionInMaze(randomPosition))
         {
-            yield return new WaitForSeconds(cheeseSpawnInterval);
-
-            Vector2 randomPosition = GetRandomPosition();
-
-            // Check if position is valid (not occupied by fruit or maze)
-            if (!IsPositionOccupied(randomPosition) && !IsPositionInMaze(randomPosition))
-            {
-                SpawnCheese(randomPosition);
-            }
+            randomPosition = GetRandomPosition();
         }
+        // Instantiate the cheese prefab at the given position
+        GameObject newCheese = Instantiate(cheesePrefab, randomPosition, Quaternion.identity);
+
+        // Add the position to the list of occupied positions
+        occupiedPositions.Add(randomPosition);
+
     }
+
+    //IEnumerator SpawnCheeseAtIntervals()
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(cheeseSpawnInterval);
+
+    //        Vector2 randomPosition = GetRandomPosition();
+
+    //        // Check if position is valid (not occupied by fruit or maze)
+    //        if (!IsPositionOccupied(randomPosition) && !IsPositionInMaze(randomPosition))
+    //        {
+    //            SpawnCheese(randomPosition);
+    //        }
+    //    }
+    //}
 
     Vector2 GetRandomPosition()
     {
