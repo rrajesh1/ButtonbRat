@@ -44,7 +44,7 @@ public class Rat : MonoBehaviour
 
         UpdateRatSprite(movement);
 
-        // Placing bomb with Right Shift
+        // Placing button with Right Shift
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
             PlaceButton();
