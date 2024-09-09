@@ -39,7 +39,7 @@ public class Rat : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow)) movementX = 1;  // Move right
 
         Vector2 movement = new Vector2(movementX, movementY).normalized;
-        myrb2d.velocity = movement * speed;
+        myrb2d.linearVelocity = movement * speed;
 
         UpdateRatSprite(movement);
 
