@@ -8,11 +8,12 @@ public class Shoes : MonoBehaviour
     public GameObject rat; // Reference to the rat object
     public LayerMask mazeLayer;
     public GameObject endPrefab;
+    public float shoeFrequency = 3f;
 
     private List<Vector2> occupiedPositions = new List<Vector2>(); // List to track occupied positions
     
     public void Start(){
-        InvokeRepeating("SpawnShoe", 2f, 5f);
+        InvokeRepeating("SpawnShoe", 2f, shoeFrequency);
     }
     public void SpawnShoe()
     {
