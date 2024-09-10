@@ -25,6 +25,8 @@ public class ItemPickup : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Gate") && ButtonItem!= null){
             GameObject newButton = Instantiate(winPrefab, new Vector3(0,0,0), Quaternion.identity);
+            //yield return new WaitForSeconds(5f);
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             
         }
