@@ -5,8 +5,11 @@ using UnityEngine;
 public class FoodSpawner : MonoBehaviour
 {
     public GameObject cheesePrefab; // Cheese prefab
+    public GameObject buttonPrefab; //button prefab
     public LayerMask mazeLayer; // LayerMask for the maze
     public float cheeseSpawnInterval = 10f; // Time interval to spawn cheese
+    public int numCheeseToWin;
+    private int cheeseCollected; 
 
     public List<GameObject> fruitPrefabs; // List of fruit prefabs
     private List<Vector2> occupiedPositions = new List<Vector2>(); // List to track occupied positions
@@ -22,6 +25,7 @@ public class FoodSpawner : MonoBehaviour
 
     public void Start()
     {
+        cheeseCollected = 0;
         
     }
     // Function to spawn a single fruit
@@ -45,6 +49,7 @@ public class FoodSpawner : MonoBehaviour
 
     public void SpawnCheese()
     {
+        
         Vector2 randomPosition = GetRandomPosition();
 
         while (IsPositionOccupied(randomPosition) || IsPositionInMaze(randomPosition))
@@ -52,11 +57,15 @@ public class FoodSpawner : MonoBehaviour
             randomPosition = GetRandomPosition();
         }
         // Instantiate the cheese prefab at the given position
-        GameObject newCheese = Instantiate(cheesePrefab, randomPosition, Quaternion.identity);
-
-        // Add the position to the list of occupied positions
-        occupiedPositions.Add(randomPosition);
-
+        if (cheeseCollected < numCheeseToWin) {
+            GameObject newCheese = Instantiate(cheesePrefab, randomPosition, Quaternion.identity);
+            occupiedPositions.Add(randomPosition);
+        }
+        else {
+            GameObject newButton = Instantiate(buttonPrefab, randomPosition, Quaternion.identity);
+            occupiedPositions.Add(randomPosition);
+        }
+        
     }
 
     //IEnumerator SpawnCheeseAtIntervals()
@@ -78,8 +87,8 @@ public class FoodSpawner : MonoBehaviour
     Vector2 GetRandomPosition()
     {
         // Adjust the range of random values to match your game area
-        float x = Random.Range(-10f, 10f);
-        float y = Random.Range(-10f, 10f);
+        float x = Random.Range(-9f, 9f);
+        float y = Random.Range(-5f, 5f);
         return new Vector2(x, y);
     }
 
@@ -87,13 +96,13 @@ public class FoodSpawner : MonoBehaviour
     {
         // Check if the position is already occupied by another fruit or cheese
         // Check if position is valid (not occupied by fruit or maze)
-        //Vector3 horizontalOffset = new Vector3(0, 0.1f, 0);
-        //Vector3 verticalOffset = new Vector3(0.1f, 0, 0);
+        // Vector3 horizontalOffset = new Vector3(0, 0.1f, 0);
+        // Vector3 verticalOffset = new Vector3(0.1f, 0, 0);
 
-        //float distance = Vector3.Magnitude(2 * verticalOffset);
-        //RaycastHit2D hit1 = Physics2D.Raycast(transform.position - verticalOffset, new Vector2(0, 1), 1f, mazeLayer);
-        //RaycastHit2D hit2 = Physics2D.Raycast(transform.position - horizontalOffset, new Vector2(1, 0), 1f, mazeLayer);
-        //return (hit1.collider != null || hit2.collider != null || occupiedPositions.Contains(position));
+        // float distance = Vector3.Magnitude(2 * verticalOffset);
+        // RaycastHit2D hit1 = Physics2D.Raycast(transform.position - verticalOffset, new Vector2(0, 1), 1f, mazeLayer);
+        // RaycastHit2D hit2 = Physics2D.Raycast(transform.position - horizontalOffset, new Vector2(1, 0), 1f, mazeLayer);
+        // return (hit1.collider != null || hit2.collider != null || occupiedPositions.Contains(position));
         return occupiedPositions.Contains(position);
     }
 
@@ -103,14 +112,16 @@ public class FoodSpawner : MonoBehaviour
         return Physics2D.OverlapCircle(position, 0.1f, mazeLayer);
     }
 
-    void SpawnCheese(Vector2 position)
-    {
-        // Instantiate the cheese prefab at the given position
-        GameObject newCheese = Instantiate(cheesePrefab, position, Quaternion.identity);
+    // void SpawnCheese(Vector2 position)
+    // {
+    //     // Instantiate the cheese prefab at the given position
+    //     GameObject newCheese = Instantiate(cheesePrefab, position, Quaternion.identity);
 
-        // Add the position to the list of occupied positions
-        occupiedPositions.Add(position);
-    }
+    //     // Add the position to the list of occupied positions
+    //     occupiedPositions.Add(position);
+    // }
+
+
 }
 
 // using UnityEngine;
