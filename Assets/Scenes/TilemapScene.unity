@@ -4084,7 +4084,7 @@ MonoBehaviour:
   spriteUp: {fileID: 21300000, guid: 74470b750f83f4303befa5e6ca897c41, type: 3}
   spriteLeft: {fileID: 21300000, guid: f8bce49655dfa4701a8b57236ac68162, type: 3}
   foodSpawner: {fileID: 1125000531}
-  numCheeseToWin: 5
+  numCheeseToWin: 1
   ButtonItem: {fileID: 0}
 --- !u!4 &1027686720
 Transform:
