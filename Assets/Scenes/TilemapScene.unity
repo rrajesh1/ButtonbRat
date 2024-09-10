@@ -2170,6 +2170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 264194011}
+  - component: {fileID: 264194012}
   m_Layer: 0
   m_Name: ShoeSpawner
   m_TagString: Untagged
@@ -2192,6 +2193,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &264194012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264194010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7644e4684a348fdb8c21bac119a1b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoePrefabs:
+  - {fileID: 591466333441382141, guid: 194f5ac98513f40af9c20ed5536e7fde, type: 3}
+  - {fileID: 674586435601950857, guid: db27b8535afe54f6fb0fda40a2ac8568, type: 3}
+  - {fileID: 1090521231522849669, guid: 249c001dc7da94385bd5788839b0de69, type: 3}
+  - {fileID: 5420620639710136297, guid: 35bfca40d6192474385cd8cfa984a13f, type: 3}
+  rat: {fileID: 1027686717}
+  mazeLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  endPrefab: {fileID: 1245415633466745217, guid: 51c0529fbc90d42939d69bf1d9d821bd, type: 3}
 --- !u!1 &538993659
 GameObject:
   m_ObjectHideFlags: 0
@@ -3616,7 +3639,7 @@ GameObject:
   - component: {fileID: 733392355}
   m_Layer: 0
   m_Name: Gate
-  m_TagString: Untagged
+  m_TagString: Gate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3883,6 +3906,7 @@ GameObject:
   - component: {fileID: 1027686718}
   - component: {fileID: 1027686722}
   - component: {fileID: 1027686723}
+  - component: {fileID: 1027686724}
   m_Layer: 0
   m_Name: Rat
   m_TagString: Untagged
@@ -4041,6 +4065,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0.85109097, y: -0.1329752}
   m_Radius: 2.8376405
+--- !u!114 &1027686724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027686717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96d0261b1b744cc8ba4730a679312af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winPrefab: {fileID: 1254991587607113714, guid: 5870d579b0a864c5ea7591a29c0b1017, type: 3}
 --- !u!1 &1125000530
 GameObject:
   m_ObjectHideFlags: 0
@@ -4071,11 +4108,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cheesePrefab: {fileID: 2731175629124422256, guid: d8674105e68ca4b8480bdc7140779b76, type: 3}
-  buttonPrefab: {fileID: 0}
+  buttonPrefab: {fileID: 3864868450326881949, guid: 5b350c606af9d4ab5a9a1974ca3df283, type: 3}
   mazeLayer:
     serializedVersion: 2
     m_Bits: 8
-  winPrefab: {fileID: 0}
+  winPrefab: {fileID: 1254991587607113714, guid: 5870d579b0a864c5ea7591a29c0b1017, type: 3}
   cheeseSpawnInterval: 10
   fruitPrefabs: []
 --- !u!4 &1125000532

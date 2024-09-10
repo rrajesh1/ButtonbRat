@@ -30,28 +30,3 @@ public class ItemPickup : MonoBehaviour
         }
     }
 }
-
-
-
-
-
-/**
-GameObject pickedItem;
-
-void OnTriggerEnter2D(Collider2D other)
-	{
-		if(other.CompareTag("Carrot") && pickedItem == null){
-			other.transform.SetParent(transform);
-			other.transform.position = transform.position + Vector3.right * 0.5f;
-			pickedItem = other.gameObject;
-		}
-
-		else if(other.CompareTag("Animal") && pickedItem != null){
-			Animal animal = other.GetComponent<Animal>();
-			if(animal != null){
-				animal.Feed();
-				Destroy(pickedItem);
-			}
-		}
-	}
-**/
