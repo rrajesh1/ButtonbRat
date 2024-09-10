@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Fruit
   - Cheese
+  - Button
+  - Gate
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - Maze
   - Water
   - UI
-  - 
+  - Button
   - 
   - 
   - 
@@ -40,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Button
+    uniqueID: 1086125057
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

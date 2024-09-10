@@ -7,9 +7,12 @@ public class FoodSpawner : MonoBehaviour
     public GameObject cheesePrefab; // Cheese prefab
     public GameObject buttonPrefab; //button prefab
     public LayerMask mazeLayer; // LayerMask for the maze
+
+    //public Sprite shoes;
+
+    public GameObject winPrefab; 
     public float cheeseSpawnInterval = 10f; // Time interval to spawn cheese
-    public int numCheeseToWin;
-    private int cheeseCollected; 
+    
 
     public List<GameObject> fruitPrefabs; // List of fruit prefabs
     private List<Vector2> occupiedPositions = new List<Vector2>(); // List to track occupied positions
@@ -22,10 +25,8 @@ public class FoodSpawner : MonoBehaviour
         // Start spawning cheese at regular intervals
         //StartCoroutine(SpawnCheeseAtIntervals());
     }
-
     public void Start()
     {
-        cheeseCollected = 0;
         
     }
     // Function to spawn a single fruit
@@ -56,17 +57,40 @@ public class FoodSpawner : MonoBehaviour
         {
             randomPosition = GetRandomPosition();
         }
-        // Instantiate the cheese prefab at the given position
-        if (cheeseCollected < numCheeseToWin) {
-            GameObject newCheese = Instantiate(cheesePrefab, randomPosition, Quaternion.identity);
-            occupiedPositions.Add(randomPosition);
-        }
-        else {
-            GameObject newButton = Instantiate(buttonPrefab, randomPosition, Quaternion.identity);
-            occupiedPositions.Add(randomPosition);
-        }
-        
+        GameObject newCheese = Instantiate(cheesePrefab, randomPosition, Quaternion.identity);
+        occupiedPositions.Add(randomPosition);
     }
+        
+    public void SpawnButton(){
+        Vector2 randomPosition = GetRandomPosition();
+        while (IsPositionOccupied(randomPosition) || IsPositionInMaze(randomPosition))
+        {
+            randomPosition = GetRandomPosition();
+        }
+        GameObject newButton = Instantiate(buttonPrefab, randomPosition, Quaternion.identity);
+        occupiedPositions.Add(randomPosition);
+    }
+
+    // public void SpawnShoe()
+    // {
+        
+    //     Vector2 randomPosition = GetRandomPosition();
+
+    //     while (IsPositionOccupied(randomPosition) || IsPositionInMaze(randomPosition))
+    //     {
+    //         randomPosition = GetRandomPosition();
+    //     }
+        
+    //     GameObject newShoe = Instantiate(shoePrefab, randomPosition, Quaternion.identity);
+    //     occupiedPositions.Add(randomPosition);
+    // }
+
+
+    // public void SpawnWin(){
+    //     Vector2 randomPosition = GetRandomPosition();
+    //     GameObject newButton = Instantiate(winPrefab, randomPosition, Quaternion.identity);
+    //     occupiedPositions.Add(randomPosition);
+    // }
 
     //IEnumerator SpawnCheeseAtIntervals()
     //{
@@ -111,6 +135,8 @@ public class FoodSpawner : MonoBehaviour
         // Check if there's a maze object at this position using a raycast
         return Physics2D.OverlapCircle(position, 0.1f, mazeLayer);
     }
+
+    
 
     // void SpawnCheese(Vector2 position)
     // {

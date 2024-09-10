@@ -16,6 +16,11 @@ public class Rat : MonoBehaviour
     Rigidbody2D myrb2d;  
     SpriteRenderer spriteRenderer;  
 
+    private int numCheeseEaten = 0;
+    public int numCheeseToWin = 3;
+
+    public GameObject ButtonItem;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +40,7 @@ public class Rat : MonoBehaviour
         // }
         
         foodSpawner.SpawnCheese();
+        // InvokeRepeating("Shoes", 2f, 5f);
     }
 
     // Update is called once per frame
@@ -90,20 +96,53 @@ public class Rat : MonoBehaviour
         }
     }
 
-    void PlaceButton()
-    {
-        //Instantiate(buttonPrefab, roundedPosition, Quaternion.identity);
-    }
-
     private void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.CompareTag("Fruit")){
             Destroy(collision.gameObject);
         }
 
         else if(collision.gameObject.CompareTag("Cheese")){
-            foodSpawner.SpawnCheese();
+            numCheeseEaten++;
+
+            if (numCheeseEaten>= numCheeseToWin){
+                foodSpawner.SpawnButton();
+            }
+            else {
+                foodSpawner.SpawnCheese();
+            }
+
             Destroy(collision.gameObject);
         }
+
+    
+    
     }
 
+
+
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     GameObject pickupObject = other.gameObject;
+    //     if (pickupObject.CompareTag("Button") && ButtonItem == null)
+    //     {
+    //         pickupObject.transform.SetParent(transform);
+    //         Destroy(other.GetComponent<Collider2D>());
+
+    //         // Destroy(other);
+    //         pickupObject.transform.localPosition = new Vector3(0.5f, 0, 0);
+    //         ButtonItem = pickupObject;
+    //     } 
+
+    // }
+
+
+/*GameObject animal = other.gameObject;
+        Cow cow = animal.GetComponent<Cow>();
+        // checks if the object has the cow script on it and if it is holding the carrot
+        if (cow != null && item != null)
+        {
+            cow.Feed();
+            Destroy(item);
+        }
+        */
 }
